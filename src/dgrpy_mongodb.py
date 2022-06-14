@@ -1,5 +1,6 @@
 import pymongo
 from pymongo import MongoClient
+import json
 
 class _mongoOperation:
     def __init__(self,MONGO_DB,MONGO_Collection,MONGO_HOST="localhost",MONGO_PORT=27017):
@@ -148,3 +149,47 @@ class mongoResult:
             "reqFilter" : self.reqFilter
         }
         return resDT if (type(resDT) is dict) or (type(resDT) is list) else None
+
+def InsertMongo(mongoOps,InsertQuery):
+    insertReq2 = mongoResult(query=InsertQuery)
+    insertReq2 = mongoOps.insert(insertReq2)
+    resinsertReq2 = insertReq2._result()
+    return resinsertReq2
+
+
+def GetMongoFindOne(mongoOps,findQuery, showField={}):
+    
+    if bool(showField) == True:
+        findMongo = mongoResult(query=findQuery,showfield=showField)
+    else:
+        findMongo = mongoResult(query=findQuery)
+    findMongo = mongoOps.find(findMongo)
+    resfindMongo = findMongo._result()
+    return resfindMongo
+
+
+def GetMongoFindAll(mongoOps, findQuery, showField={}):
+    if bool(showField) == True:
+        findMongo = mongoResult(query=findQuery,showfield=showField)
+    else:
+        findMongo = mongoResult(query=findQuery)
+    findMongo = mongoOps.findAll(findMongo)
+    resfindMongo = findMongo._result()
+    return resfindMongo
+    
+def GetMongoFindAggregate(mongoOps, findQuery):
+    findMongo = mongoResult(query=findQuery)
+    findMongo = mongoOps.findAggregate(findMongo)
+    resfindMongo = findMongo._result()
+    return resfindMongo
+    
+
+def UpdateMongo(mongoOps,findQuery,UpdateFilter):
+    #UpdateFilter = {
+        #"$set":  UpdateArray
+    #}
+
+    updateMongo = mongoResult(query=findQuery, filter=UpdateFilter)
+    UpdateMongo = mongoOps.update(updateMongo)
+    resUpdateMongo = UpdateMongo._result()
+    return resUpdateMongo

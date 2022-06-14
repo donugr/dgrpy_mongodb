@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: dgrpy-mongodb
-Version: 0.0.1
+Version: 0.0.9
 Summary: mongodb module in python 3
 Home-page: https://github.com/donugr/dgrpy_mongodb
 Author: donugr

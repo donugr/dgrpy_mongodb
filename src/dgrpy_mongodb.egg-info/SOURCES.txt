@@ -4,4 +4,5 @@ setup.py
 src/dgrpy_mongodb.egg-info/PKG-INFO
 src/dgrpy_mongodb.egg-info/SOURCES.txt
 src/dgrpy_mongodb.egg-info/dependency_links.txt
+src/dgrpy_mongodb.egg-info/requires.txt
 src/dgrpy_mongodb.egg-info/top_level.txt
